@@ -1,0 +1,36 @@
+<div class="row mt-4 p-0" style="">
+    <div class="card p-0 " style="">
+        <div class="card-header text-white" style="background-color: #00917d;">
+           <b>Generating Topics</b>
+        </div>
+        <div class="card-body p-0" style="width:100%">
+            <div class="input-group" style="width:100%">
+                <div class="input-group-prepend" style="width:min-content;">
+                    <span class="input-group-text" id="basic-addon2">Number of Topics</span>
+                </div>
+                <input type="text" id="topics_number" required min="2" name="topics_number" class="form-control" placeholder="2" aria-label="" aria-describedby="basic-addon1">
+                <div class="input-group-prepend" style="width:min-content;">
+                    <span class="input-group-text" id="basic-addon2">Method</span>
+                </div>
+                <select class="custom-select form-control" id="method" name="method">
+                <option value="LSA">LSA: Latent Semantic Analysis</option>
+                <option value="LDA">LDA: Latent Dirichilet Allocation</option>
+                </select>
+                <div class="input-group-prepend" style="width:min-content;">
+                    <span class="input-group-text" id="basic-addon2">Samples length</span>
+                </div>
+                <input type="text" id="samples_length" name="samples_length" class="form-control" placeholder="0: All data" aria-label="" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group" style="width:100%">
+                <button id="generate" class="btn btn-success" style="width:100%">Generate Topics Report</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var url='{% url "generate_report" %}';
+        $('#generate').click(function() {
+            alert('starting');
+            generate_report(url);
+        });
+    </script>
+</div>

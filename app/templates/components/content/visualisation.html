@@ -1,0 +1,16 @@
+<div class="row">
+    {% if request.session.selected_data %}
+        {% if data.raw %}
+            <div class="col">
+                {% include 'components/parts/data-table.html' with data=data.raw title='Raw Data' %}
+            </div>
+            {% endif %}
+            {% if data.clean %}
+            <div class="col">
+                {% include 'components/parts/data-table.html' with data=data.clean title='Clean Data' %}
+            </div>
+        {% endif %}
+    {% else %}
+        {% include 'components/commun/message.html' with message='No Data Selected' %}
+    {% endif %}
+</div>

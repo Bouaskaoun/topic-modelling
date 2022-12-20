@@ -1,0 +1,19 @@
+<div class="row">
+    {% if request.session.selected_data %}
+        {% if not data.clean_data %}
+            {% include 'components/commun/message.html' with message='Data is not clean, press the button to clean it' %}
+                <div class="col " style="width: 100%;">
+                    <a href="{% url 'clean_data' %}" class="btn btn-warning text-warning p-2" style="background-color: #00917d;width: 100%;" id="clean-btn" ><b>Clean {{data.data}} ( column: {{data.data.text_column}} )</b></a>
+                </div>
+        {% endif %}
+        {% if data.clean_data %}
+        <div class="row ">
+        <div class="col ">
+            {% include 'components/parts/data-table.html' with data=data.clean_data title='Raw Data' %}
+        </div>
+        </div>
+        {% endif %}
+    {% else %}
+        {% include 'components/commun/message.html' with message='No Data Selected' %}
+    {% endif %}
+</div>

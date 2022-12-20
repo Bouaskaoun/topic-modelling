@@ -1,0 +1,35 @@
+{% load static %}
+<script src="{% static 'js/report.js' %}"></script>
+<div class="row">
+    {% if request.session.selected_data %}
+
+        <div class="row p-0">
+            <div class="col ">
+                {% include 'components/parts/top-words.html' with plot_data=data.raw_data title='Raw' %}
+            </div>
+            {% if data.clean_data %}
+                <div class="col ">
+                    {% include 'components/parts/top-words.html' with plot_data=data.clean_data title='Cleaned' %}
+                </div>
+            {% endif %}
+        <script>
+                $(".card-img-top").on("click", function() {
+                    $('#imagepreview').attr('src', $(this).attr('src'));
+                    $('#myModalLabel').html($(this).attr('alt'));
+                    $('#imagemodal').modal('show');
+                });
+        </script>
+        </div>
+        {% if not data.data.cleaned %}
+            <div class="row" >{% include 'components/commun/message.html' with message='Data is not clean, go to Preprocess TAB' %}</div>
+        {% else %}
+        <br>
+        {% include 'components/parts/topics-panel.html'%}
+        <div class="row mt-4 p-0" id="report-content">
+            {% include 'components/parts/report-content.html'%}
+        </div>
+        {% endif %}
+    {% else %}
+        {% include 'components/commun/message.html' with message='No Data Selected' %}
+    {% endif %}
+</div>

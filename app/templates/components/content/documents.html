@@ -1,0 +1,48 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/documents.css' %}">
+<script src="{% static 'js/documents.js' %}"></script>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'save_data' %}" name="upload-form" id="upload-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="file-upload">
+                        <button class="file-upload-btn" id="upload-btn" type="button" onclick="$('.row.mt-2.p-0').hide();$('.file-upload-input').trigger( 'click' );">Add File</button>
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type="file" accept=".csv" name="fileupload" id="fileupload" onchange="readURL(this);uploadFile('{% url 'get_columns' %}');" />
+                            <div class="drag-text">
+                            <h3>Drag and drop or select csv File</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content mt-1">
+                            <div class="image-title-wrap p-0">
+                            <button type="button" onclick="removeUpload()" style="border-bottom: 4px solid #dc3545;" class="file-upload-btn bg-danger">Remove <span class="image-title">Uploaded File</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2 p-0" style="display: none;">
+                    <div class="card p-0 " style="">
+                        <div class="card-header text-white" style="background-color: #00917d;">
+                           <b>Parameters</b>
+                        </div>
+                        <div class="card-body p-0" style="width:100%">
+                            <div class="input-group" style="width:100%">
+                                <select class="custom-select" style="width:100%;" id="column" name="column">
+                                </select>
+                            </div>
+                            <div class="input-group" style="width:100%">
+                                <button type="submit" class="btn btn-success" style="width:100%">Save File</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+      <div class="col">
+        {% include 'components/parts/data-files.html' %}
+      </div>
+    </div>
+</div>
+

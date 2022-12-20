@@ -1,0 +1,14 @@
+<div class="card p-0" style="">
+    <div class="card-header text-white" style="background-color: #00917d;">
+       <b>Top 20 words in "{{data.data.name}}" {{title}} Dataset <small>(column: {{data.data.text_column}})</small></b>
+    </div>
+    <center>
+    <img class="card-img-top" src="data:image/png;base64,{{plot_data.top_words}}" alt="Top 20 words in '{{data.data.name}}' {{title}} Dataset">
+    </center>
+    <ul class="list-group list-group-flush text-start">
+        <li class="list-group-item"><span >1 st: </span><b> {{plot_data.words.0}}</b><span class="badge bg-primary float-end">{{plot_data.words_values.0}} occurrences</span></li>
+        <li class="list-group-item"><span >2 nd: </span><b> {{plot_data.words.1}}</b><span class="badge bg-primary float-end">{{plot_data.words_values.1}} occurrences</span></li>
+        <li class="list-group-item"><span >3 rd: </span><b> {{plot_data.words.2}}</b><span class="badge bg-primary float-end">{{plot_data.words_values.2}} occurrences</span></li>
+        <li class="list-group-item"><span >Last: </span><b> {{plot_data.words.19}}</b><span class="badge bg-primary float-end">{{plot_data.words_values.19}} occurrences</span></li>
+    </ul>
+</div>

@@ -1,0 +1,33 @@
+{% if request.GET.operation %}
+<div style="position:fixed; bottom:0;align-items: center;z-index: 1;width: 100%;">
+    <div class="mb-2" style="width:min-content;margin: 0 auto;">
+        <div class="toast align-items-center text-white bg-{% if request.GET.status == 'True' %}success{% else %}danger{% endif %} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+            <div class="toast-body">
+                <b>
+                    {% if request.GET.operation == 'add' %}
+                    {% if request.GET.status == 'True' %}Data uploaded successfully{% else %}Uploading proccess failed{% endif %}
+                    {% endif %}
+                    {% if request.GET.operation == 'delete' %}
+                    {% if request.GET.status == 'True' %}Data deleted successfully{% else %}Deleting proccess failed{% endif %}
+                    {% endif %}
+                    {% if request.GET.operation == 'select' %}
+                    {% if request.GET.status == 'True' %}Data selected successfully{% else %}Selecting proccess failed{% endif %}
+                    {% endif %}
+                    {% if request.GET.operation == 'clean' %}
+                    {% if request.GET.status == 'True' %}Data is cleaned successfully{% else %}Cleaning proccess failed{% endif %}
+                    {% endif %}
+                </b>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready( function() {
+        $('.toast').show()
+        $('.toast').delay(5000).fadeOut();
+    });
+</script>
+
+{% endif %}

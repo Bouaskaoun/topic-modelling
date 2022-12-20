@@ -1,0 +1,13 @@
+django
+pillow
+pandas
+numpy
+scipy
+nltk
+demoji
+sklearn
+scikit-learn
+matplotlib
+seaborn
+# heroku center
+gunicorn

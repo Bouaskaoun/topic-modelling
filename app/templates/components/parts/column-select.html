@@ -1,0 +1,33 @@
+{% if columns %}
+<div class="input-group mb-1">
+    <div class="input-group-prepend" style="width: 20%;">
+      <span class="input-group-text" id="basic-addon1">Data Name</span>
+    </div>
+    <input type="text" id="name" name="name" class="form-control" placeholder="Type the document name" aria-label="" aria-describedby="basic-addon1">
+</div>
+<label id="name-error" class="error" for="name"></label>
+<div class="input-group" style="width:100%">
+    <div class="input-group-prepend" style="width: 20%;">
+        <span class="input-group-text" id="basic-addon2">Text Column</span>
+    </div>
+<select class="custom-select form-control"  id="column" name="column">
+<option value="null" selected>Choose Text Column...</option>
+    {% for column in columns %}
+        <option value="{{column}}">{{column}}</option>
+    {% endfor %}
+</select>
+<script>
+    var values=[{% for column in columns %}'{{column}}',{% endfor %}];
+</script>
+</div>
+<label id="column-error" class="error" for="column"></label>
+<div class="input-group" style="width:100%">
+    <button type="submit" class="btn btn-success" style="width:100%">Save File</button>
+</div>
+{% else %}
+<div class="card border-danger mb-3" style="max-width: 18rem;">
+    <div class="card-body text-danger">
+      <p class="card-text">Invalid File</p>
+    </div>
+  </div>
+{% endif %}

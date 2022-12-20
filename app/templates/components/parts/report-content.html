@@ -1,0 +1,53 @@
+{% if topics %}
+<div class="card m-0 p-0">
+    <div class="card-header text-white" style="background-color: #00917d;">
+      <b> {{method}} Topics Report</b>
+    </div>
+    <table class="table overflow-auto" style="overflow:hidden;max-height: 500px;">
+      <thead>
+        <tr>
+          <th scope="col" class="p-start-2">Topic</th>
+          <th scope="col" class=" text-center">Top 10 Words</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data.topic_words %}
+        <tr>
+            <td></td>
+            <td class=" text-center">
+                {{row}}
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="card-body p-0" style="width:100%">
+        <div class="row" >
+            <div class="col" >
+                <div class="card m-0 p-0">
+                    <div class="card-header text-white" style="background-color: #00917d;">
+                      <b>Number of headlines for each topic</b>
+                    </div>
+                    <img class="card-img-bottom" src="data:image/png;base64,{{data.plot}}" alt="Top 20 words in each {{method}} topics">
+                </div>
+            </div>
+            <div class="col" >
+                <div class="card m-0 p-0">
+                    <div class="card-header text-white" style="background-color: #00917d;">
+                      <b>t-SNE Clustering {{method}} Topics</b>
+                    </div>
+                    <img class="card-img-bottom" src="data:image/png;base64,{{data.tsne}}" alt="Headlines Clustering Plot">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <script>
+    $(".card-img-bottom").on("click", function() {
+        $('#imagepreview').attr('src', $(this).attr('src'));
+        $('#myModalLabel').html($(this).attr('alt'));
+        $('#imagemodal').modal('show');
+    });
+    </script>
+{% else %}
+{% endif %}

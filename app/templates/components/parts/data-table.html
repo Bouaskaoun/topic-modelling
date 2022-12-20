@@ -1,0 +1,31 @@
+{% load functions %}
+
+{% with data|get_keys as kys %}
+{% with data|get_rows as rows %}
+<div class="card">
+    <div class="card-header text-white" style="background-color: #00917d;">
+      <b>{{title}}</b>
+    </div>
+    <table class="table overflow-auto" style="overflow:hidden;max-height: 500px;">
+        <thead>
+          <tr>
+            {% for item in kys %}
+              <th scope="col">{{item}}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+              {% for value in row %}
+              <td>{{value}}</td>
+              {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+  </div>
+
+
+{% endwith %}
+{% endwith %}

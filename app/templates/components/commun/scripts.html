@@ -1,0 +1,36 @@
+{% load static %}
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/all.min.js' %}"></script>
+<script src="{% static 'js/navbar.js' %}"></script>
+<script src="{% static 'js/jquery.validate.js' %}"></script>
+<!-- inline scripts below -->
+<script>
+    // loading function
+    $(document).ready(function() {
+        // loading dashboard
+        var page='dashboard';
+        {% if request.GET.page %}
+        page='{{request.GET.page}}';
+        {% endif %}
+        load_page(page);
+        // changing the current page trigger
+        $('.nav-item .nav-link').click(function() {
+           load_page(this.text.toLowerCase().trim());
+        });
+    });
+    
+    // changing the current page
+    function load_page(page){
+        url='{% url "home" %}ajax/page/'+page;
+        $.ajax({
+            url: url,
+            contentType: "application/html; charset=utf-8",
+            success: function(result) {
+                $("#content").html(result);
+            }
+        });
+    }
+</script>
+<!-- end inline scripts below -->
