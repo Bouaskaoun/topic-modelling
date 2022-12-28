@@ -18,6 +18,14 @@ LDA is a probabilistic model that assumes that each document is a mixture of a f
 
 To implement LDA, we will first preprocess the documents in the same way as we did for LSA. We will then use the preprocessed documents to train the LDA model. Once the model is trained, we can use it to identify the main topics in the documents and the words that are most associated with each topic.
 
+## Installation and Dependencies
+To install the dependencies for this project, you will need to have Python 3.5 or higher and pip installed on your system. You can then install the required packages by running the following command:
+
+```bash
+pip install -r requirements.txt
+```
+This will install all of the packages listed in the requirements.txt file, including Django, Pillow, Pandas, NumPy, SciPy, NLTK, demoji, scikit-learn, Matplotlib, and Seaborn.
+
 ## Conclusion
 
 Both LSA and LDA are useful techniques for uncovering the main themes within a large corpus of documents. LSA is based on the idea that words with similar meanings tend to be used in similar contexts, while LDA is a probabilistic model that assumes that each document is a mixture of a fixed number of topics. By applying these techniques to a collection of news articles, we can identify the main topics and themes discussed in the articles.
